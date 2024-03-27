@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private bool canJump = true;
     private float jumpTimer;
 
+    public Animator animator;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -52,6 +54,30 @@ public class Player : MonoBehaviour
                 canJump = true;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+        {
+            PlayPunchAnimation();
+        }
+        else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(1))
+        {
+            PlayKickAnimation();
+        }
+    }
+
+    private void PlayPunchAnimation()
+    {
+        animator.SetBool("Punch", true);
+    }
+
+    private void PlayKickAnimation()
+    {
+        animator.SetBool("Kick", true);
+    }
+
+    private void OnAnimationFinished()
+    {
+        animator.SetBool("Punch", false);
+        animator.SetBool("Kick", false);
     }
 
     private void Jump()
