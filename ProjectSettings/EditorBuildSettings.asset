@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightScene.unity
     guid: e4fe42453d6626f4f98e19c50a018111
+  - enabled: 1
+    path: Assets/Scenes/FishingRodScene.unity
+    guid: 1430c8817f600ec42bd0bc6a2acd2c62
+  - enabled: 1
+    path: Assets/Scenes/StartCutSceneBigFish.unity
+    guid: bc0caa0cefcb49942ad9160d8beee8a8
+  - enabled: 1
+    path: Assets/Scenes/StartCutSceneSmallFish.unity
+    guid: c97899c536be50646afd8c69f54627bf
   m_configObjects: {}

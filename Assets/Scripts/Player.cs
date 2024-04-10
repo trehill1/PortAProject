@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public float jumpForce = 10f;
     public float jumpCooldown = 1f;
     public int maxHealth = 100;
-    public float invincibilityDuration = .5f;
+    public float knockbackForce = 10f;
+    public float knockbackDuration = 0.5f;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -16,11 +17,10 @@ public class Player : MonoBehaviour
     private float jumpTimer;
     public Animator animator;
     private int currentHealth;
-    private bool isInvincible = false;
-    private float invincibilityTimer;
+    private bool isKnockback = false;
+    private float knockbackTimer;
 
     public GameObject enemy;
-
 
     private void Start()
     {
@@ -31,40 +31,43 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Move left and right
-        float horizontalInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-
-        // Flip sprite to face the enemy
-        if (enemy != null)
+        if (!isKnockback)
         {
-            if (transform.position.x < enemy.transform.position.x)
+            // Move left and right
+            float horizontalInput = Input.GetAxis("Horizontal");
+            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+
+            // Flip sprite to face the enemy
+            if (enemy != null)
             {
-                spriteRenderer.flipX = false;
+                if (transform.position.x < enemy.transform.position.x)
+                {
+                    spriteRenderer.flipX = false;
+                }
+                else
+                {
+                    spriteRenderer.flipX = true;
+                }
             }
-            else
+
+            // Flip sprite based on movement direction
+            //This will be removed when a enemy is in scene
+            if (horizontalInput < 0)
             {
                 spriteRenderer.flipX = true;
             }
-        }
+            else if (horizontalInput > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
 
-        // Flip sprite based on movement direction
-        //This will be removed when a enemy is in scene
-        if (horizontalInput < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (horizontalInput > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
-        // Jump
-        if (Input.GetKeyDown(KeyCode.W) && canJump)
-        {
-            Jump();
-            canJump = false;
-            jumpTimer = jumpCooldown;
+            // Jump
+            if (Input.GetKeyDown(KeyCode.W) && canJump)
+            {
+                Jump();
+                canJump = false;
+                jumpTimer = jumpCooldown;
+            }
         }
 
         // Update jump cooldown timer
@@ -86,14 +89,13 @@ public class Player : MonoBehaviour
             PlayKickAnimation();
         }
 
-        // Update invincibility timer
-        if (isInvincible)
+        // Update knockback timer
+        if (isKnockback)
         {
-            invincibilityTimer -= Time.deltaTime;
-            if (invincibilityTimer <= 0)
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0)
             {
-                isInvincible = false;
-                spriteRenderer.color = Color.white;
+                isKnockback = false;
             }
         }
     }
@@ -103,9 +105,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(10);
+            ApplyKnockback(collision.transform.position);
         }
     }
-
 
     private void PlayPunchAnimation()
     {
@@ -130,25 +132,20 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (!isInvincible)
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
         {
-            currentHealth -= damageAmount;
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
-            else
-            {
-                StartInvincibility();
-            }
+            Die();
         }
     }
 
-    private void StartInvincibility()
+    private void ApplyKnockback(Vector3 enemyPosition)
     {
-        isInvincible = true;
-        invincibilityTimer = invincibilityDuration;
-        spriteRenderer.color = Color.red;
+        isKnockback = true;
+        knockbackTimer = knockbackDuration;
+
+        Vector2 knockbackDirection = (transform.position - enemyPosition).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
 
     private void Die()

@@ -895,7 +895,7 @@ GameObject:
   - component: {fileID: 1607412034}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1219,7 +1219,8 @@ MonoBehaviour:
   jumpForce: 6
   jumpCooldown: 1
   maxHealth: 100
-  invincibilityDuration: 0.5
+  knockbackForce: 10
+  knockbackDuration: 0.5
   animator: {fileID: 1841670443}
   enemy: {fileID: 0}
 --- !u!212 &1841670440
