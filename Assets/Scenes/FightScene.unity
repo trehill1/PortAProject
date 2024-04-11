@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &326145527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4863665522110381650, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+  m_PrefabInstance: {fileID: 2991435428265978577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef04cedb8d7e463d95afbe5265e9573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &345143954
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +665,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957574993}
   m_CullTransparentMesh: 1
+--- !u!114 &1260086191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 267101446678844864, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+  m_PrefabInstance: {fileID: 2991435428265978577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9835c46eebe6042b2825e3cbaabc6451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1288855837
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +903,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499137751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4520529343719302723, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+  m_PrefabInstance: {fileID: 2991435428265978577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d059537a056c4111af036d8feb067cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607412033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,6 +1441,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigFish
       objectReference: {fileID: 0}
+    - target: {fileID: 4341829708452725813, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520529343719302723, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: bigJumpState
+      value: 
+      objectReference: {fileID: 326145527}
+    - target: {fileID: 4863665522110381650, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: bigFish
+      value: 
+      objectReference: {fileID: 1260086191}
+    - target: {fileID: 4863665522110381650, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: jumpForce
+      value: 575
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863665522110381650, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: bigIdleState
+      value: 
+      objectReference: {fileID: 1499137751}
+    - target: {fileID: 5730903473722964908, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730903473722964908, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305079171651282657, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
+      propertyPath: maxWalkForce
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1421,10 +1486,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1093116889807548993, guid: a87002dd2b0ba40c99b2094499bf0a67, type: 3}
-      propertyPath: m_GravityScale
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2662258112846571649, guid: a87002dd2b0ba40c99b2094499bf0a67, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.11
@@ -1469,9 +1530,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallFish
       objectReference: {fileID: 0}
-    - target: {fileID: 7024910815366704702, guid: a87002dd2b0ba40c99b2094499bf0a67, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 2800007457598168375, guid: a87002dd2b0ba40c99b2094499bf0a67, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

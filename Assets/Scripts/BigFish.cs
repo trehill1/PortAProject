@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class BigFish : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public BigFishState currentState;
 
-    // Update is called once per frame
+    public BigIdleState bigIdleState;
+    public BigHurtState bigHurtState;
+    public BigJumpState bigJumpState;
+    public BigKickState bigKickState;
+    public BigMoveState bigMoveState;
+    public BigPunchState bigPunchState;
+
     void Update()
     {
-        
+        BigRunStateMachine();
+    }
+
+    private void BigRunStateMachine()
+    {
+        BigFishState nextState = currentState?.BigRunCurrentState();
+
+        if (nextState != null)
+        {
+            BigSwitchToTheNextState(nextState);
+        }
+    }
+
+    private void BigSwitchToTheNextState(BigFishState nextState)
+    {
+        currentState = nextState;
     }
 }
