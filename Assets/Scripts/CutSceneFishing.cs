@@ -43,13 +43,13 @@ public class CutSceneFishing : MonoBehaviour
     {
         animator.SetBool("run", false);
 
-        int x = Random.Range(0, 2);
+        float x = Random.Range(0, 2);
 
-        if (x == 0)
+        if (x < 1)
         {
             SceneManager.LoadScene(3);
         }
-        else if (x == 1)
+        else
         {
             SceneManager.LoadScene(4);
         }
