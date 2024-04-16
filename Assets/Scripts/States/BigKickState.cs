@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class BigKickState : BigFishState
 {
+    public BigIdleState bigIdleState;
+
     public override BigFishState BigRunCurrentState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Big Fish Kicks!");
+        return bigIdleState;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

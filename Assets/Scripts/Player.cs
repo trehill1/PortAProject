@@ -104,8 +104,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(10);
-            ApplyKnockback(collision.transform.position);
+            //TakeDamage(10);
+            //ApplyKnockback(collision.transform.position);
         }
     }
 
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ApplyKnockback(Vector3 enemyPosition)
+    public void ApplyKnockback(Vector3 enemyPosition)
     {
         isKnockback = true;
         knockbackTimer = knockbackDuration;

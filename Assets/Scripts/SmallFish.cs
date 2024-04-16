@@ -31,4 +31,26 @@ public class SmallFish : MonoBehaviour
     {
         currentState = nextState;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player playerScript = collision.gameObject.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                float bigFishAction = Random.Range(0, 10);
+
+                if (bigFishAction < 5)
+                {
+                    Debug.Log("Small Fish does not Attack");
+                }
+                else
+                {
+                    playerScript.TakeDamage(10);
+                    playerScript.ApplyKnockback(transform.position);
+                }
+            }
+        }
+    }
 }

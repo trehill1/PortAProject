@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a971eafca5244dc930ab4235726086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigIdleState: {fileID: 4520529343719302723}
 --- !u!1 &2669461876159688628
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +241,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02334115, y: -0.0988611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -251,7 +252,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85, y: 1.3}
+  m_Size: {x: 0.7332949, y: 1.1022778}
   m_EdgeRadius: 0
 --- !u!95 &1970861067453279534
 Animator:
@@ -261,7 +262,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4341829708452725813}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ec18345c1402049ed822747c9c30ff67, type: 2}
   m_CullingMode: 0
@@ -290,9 +291,8 @@ MonoBehaviour:
   bigIdleState: {fileID: 4520529343719302723}
   bigHurtState: {fileID: 5682214282774625151}
   bigJumpState: {fileID: 4863665522110381650}
-  bigKickState: {fileID: 5994806983710376421}
   bigMoveState: {fileID: 8305079171651282657}
-  bigPunchState: {fileID: 8822441270695081247}
+  animator: {fileID: 1970861067453279534}
 --- !u!1 &4386455480123687265
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca15baae1de7f46f1b5db6a36b94385b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigIdleState: {fileID: 4520529343719302723}
 --- !u!1 &8437447009833604280
 GameObject:
   m_ObjectHideFlags: 0
