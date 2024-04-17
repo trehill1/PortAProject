@@ -165,7 +165,7 @@ public class Player : MonoBehaviour
     {
         // Handle player death
         deathText.gameObject.SetActive(true);
-
+        animator.SetBool("Died", true);
         Debug.Log("Player died!");
     }
 }
