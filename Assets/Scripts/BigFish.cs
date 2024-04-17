@@ -52,6 +52,7 @@ public class BigFish : MonoBehaviour
                     // Apply punch force to the player
                     playerScript.TakeDamage(10);
                     playerScript.ApplyKnockback(transform.position); // Pass BigFish's position to ApplyKnockback
+
                 }
                 else
                 {

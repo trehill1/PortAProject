@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     public float jumpCooldown = 1f;
-    public int maxHealth = 100;
+    public float maxHealth = 100f;
     public float knockbackForce = 10f;
     public float knockbackDuration = 0.5f;
 
@@ -16,11 +18,13 @@ public class Player : MonoBehaviour
     private bool canJump = true;
     private float jumpTimer;
     public Animator animator;
-    private int currentHealth;
+    private float currentHealth;
     private bool isKnockback = false;
     private float knockbackTimer;
 
     public GameObject enemy;
+    public Image healthBarImage;
+    public TextMeshProUGUI deathText;
 
     private void Start()
     {
@@ -98,6 +102,7 @@ public class Player : MonoBehaviour
                 isKnockback = false;
             }
         }
+        UpdatePlayerHealth();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -133,6 +138,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -148,9 +154,18 @@ public class Player : MonoBehaviour
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
 
+    private void UpdatePlayerHealth()
+    {
+        float fillAmount = currentHealth / maxHealth;
+        healthBarImage.fillAmount = fillAmount;
+
+    }
+
     private void Die()
     {
         // Handle player death
+        deathText.gameObject.SetActive(true);
+
         Debug.Log("Player died!");
     }
 }

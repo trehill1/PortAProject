@@ -11,6 +11,7 @@ public class CutSceneFishing : MonoBehaviour
     private bool isAnimationFinished = false;
     private float animationDuration = 2.5f; 
     private float elapsedTime = 0f;
+    public float Enemy;
 
     private void Awake()
     {
@@ -34,6 +35,8 @@ public class CutSceneFishing : MonoBehaviour
         }
     }
 
+
+
     private void PlayFishingAnimation()
     {
         animator.SetBool("run", true);
@@ -43,9 +46,9 @@ public class CutSceneFishing : MonoBehaviour
     {
         animator.SetBool("run", false);
 
-        float x = Random.Range(0, 2);
+        Enemy = Random.Range(0, 2);
 
-        if (x < 1)
+        if (Enemy < 1)
         {
             SceneManager.LoadScene(3);
         }
