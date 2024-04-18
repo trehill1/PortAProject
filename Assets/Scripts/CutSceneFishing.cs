@@ -20,6 +20,7 @@ public class CutSceneFishing : MonoBehaviour
 
         // Play Animation
         PlayFishingAnimation();
+        Enemy = Random.Range(0, 2);
     }
     private void Update()
     {
@@ -35,6 +36,10 @@ public class CutSceneFishing : MonoBehaviour
         }
     }
 
+    public float getEnemy()
+    {
+        return Enemy; 
+    }
 
 
     private void PlayFishingAnimation()
@@ -45,8 +50,6 @@ public class CutSceneFishing : MonoBehaviour
     private void OnAnimationFinished()
     {
         animator.SetBool("run", false);
-
-        Enemy = Random.Range(0, 2);
 
         if (Enemy < 1)
         {

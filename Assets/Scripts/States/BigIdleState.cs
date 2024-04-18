@@ -8,11 +8,11 @@ public class BigIdleState : BigFishState
     public BigJumpState bigJumpState;
 
     private float timer = 0f;
-    private float idleTime = Random.Range(4f, 5f); // Idle time in seconds
 
     public override BigFishState BigRunCurrentState()
     {
-        timer += Time.deltaTime;
+            float idleTime = Random.Range(4f, 5f); // Idle time in seconds
+            timer += Time.deltaTime;
 
         if (timer >= idleTime)
         {

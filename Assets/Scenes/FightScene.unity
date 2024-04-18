@@ -311,8 +311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 488, y: 460}
-  m_SizeDelta: {x: 750, y: 60}
+  m_AnchoredPosition: {x: 140, y: 100}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &558026160
 MonoBehaviour:
@@ -463,8 +463,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 450}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: 0, y: 95}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &666442034
 MonoBehaviour:
@@ -504,6 +504,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666442032}
   m_CullTransparentMesh: 1
+--- !u!1 &780046346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780046348}
+  - component: {fileID: 780046347}
+  m_Layer: 0
+  m_Name: CutScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &780046347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780046346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717dd62002dc00f4eaf35c98ea059ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 780046346}
+  animator: {fileID: 1841670443}
+  Enemy: 0
+--- !u!4 &780046348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780046346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 245.53468, y: 62.33644, z: 4.544182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &886354856
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,8 +585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -488, y: 460}
-  m_SizeDelta: {x: 750, y: 60}
+  m_AnchoredPosition: {x: -140, y: 100}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886354858
 MonoBehaviour:
@@ -613,8 +660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1798, y: 1011}
+  m_AnchoredPosition: {x: 0.000015259, y: 9.09e-13}
+  m_SizeDelta: {x: 462, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957574995
 MonoBehaviour:
@@ -756,8 +803,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 488, y: 460}
-  m_SizeDelta: {x: 750, y: 60}
+  m_AnchoredPosition: {x: 140, y: 100}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374180050
 MonoBehaviour:
@@ -928,6 +975,7 @@ MonoBehaviour:
   Enemy: 0
   Bigfish: {fileID: 4341829708452725813, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
   Smallfish: {fileID: 2800007457598168375, guid: a87002dd2b0ba40c99b2094499bf0a67, type: 3}
+  csFishing: {fileID: 780046347}
 --- !u!1 &1607412033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,8 +1346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -488, y: 460}
-  m_SizeDelta: {x: 750, y: 60}
+  m_AnchoredPosition: {x: -140, y: 100}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1738832426
 MonoBehaviour:
@@ -1408,7 +1456,7 @@ MonoBehaviour:
   animator: {fileID: 1841670443}
   enemy: {fileID: 0}
   healthBarImage: {fileID: 1738832426}
-  deathText: {fileID: 0}
+  deathText: {fileID: 1715383716}
 --- !u!212 &1841670440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1555,3 +1603,4 @@ SceneRoots:
   - {fileID: 655237763}
   - {fileID: 345143956}
   - {fileID: 413262073}
+  - {fileID: 780046348}

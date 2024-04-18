@@ -7,10 +7,11 @@ public class RandomizerScript : MonoBehaviour
     public float Enemy;
     public GameObject Bigfish;
     public GameObject Smallfish;
+    public CutSceneFishing csFishing;
 
     private void Start()
     {
-        Enemy = PlayerPrefs.GetFloat("Enemy");
+        Enemy = csFishing.getEnemy();
 
         if(Enemy < 1)
         {
