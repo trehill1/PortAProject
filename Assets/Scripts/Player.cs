@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public Image healthBarImage;
     public TextMeshProUGUI deathText;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -109,8 +110,36 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            //TakeDamage(10);
-            //ApplyKnockback(collision.transform.position);
+            // Check if the collision is with BigFish or SmallFish
+            BigFish bigFish = collision.gameObject.GetComponent<BigFish>();
+            SmallFish smallFish = collision.gameObject.GetComponent<SmallFish>();
+
+            if (bigFish != null || smallFish != null)
+            {
+                // Check for player attack input and apply knockback to the enemy
+                if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+                {
+                    if (bigFish != null)
+                    {
+                        bigFish.ApplyKnockback(transform.position);
+                    }
+                    else if (smallFish != null)
+                    {
+                        smallFish.ApplyKnockback(transform.position);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(1))
+                {
+                    if (bigFish != null)
+                    {
+                        bigFish.ApplyKnockback(transform.position);
+                    }
+                    else if (smallFish != null)
+                    {
+                        smallFish.ApplyKnockback(transform.position);
+                    }
+                }
+            }
         }
     }
 

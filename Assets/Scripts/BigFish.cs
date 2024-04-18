@@ -11,7 +11,25 @@ public class BigFish : MonoBehaviour
     public BigJumpState bigJumpState;
     public BigMoveState bigMoveState;
 
+    public float maxHealth = 100f;
+    public float currentHealth;
+
+    public float knockbackForce = 10f;
+    public float knockbackDuration = 0.5f;
+    private bool isKnockback = false;
+    private float knockbackTimer;
+
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+
     public Animator animator;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        currentHealth = maxHealth;
+    }
 
     void Update()
     {
@@ -63,5 +81,30 @@ public class BigFish : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ApplyKnockback(Vector3 enemyPosition)
+    {
+        isKnockback = true;
+        knockbackTimer = knockbackDuration;
+
+        Vector2 knockbackDirection = (transform.position - enemyPosition).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        animator.SetBool("Died", true);
+        Debug.Log("Fish died!");
     }
 }
