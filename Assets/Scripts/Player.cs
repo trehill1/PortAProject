@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     public Image healthBarImage;
     public TextMeshProUGUI deathText;
 
+    public bool isTouchingFish = false;
+
+
 
     private void Start()
     {
@@ -104,24 +107,21 @@ public class Player : MonoBehaviour
             }
         }
         UpdatePlayerHealth();
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (isTouchingFish)
         {
-            // Check if the collision is with BigFish or SmallFish
-            BigFish bigFish = collision.gameObject.GetComponent<BigFish>();
-            SmallFish smallFish = collision.gameObject.GetComponent<SmallFish>();
-
-            if (bigFish != null || smallFish != null)
+            if (enemy != null)
             {
+                BigFish bigFish = enemy.gameObject.GetComponent<BigFish>();
+                SmallFish smallFish = enemy.gameObject.GetComponent<SmallFish>();
+
                 // Check for player attack input and apply knockback to the enemy
                 if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
                 {
                     if (bigFish != null)
                     {
                         bigFish.ApplyKnockback(transform.position);
+                        Debug.Log("Big Fish Punched");
                     }
                     else if (smallFish != null)
                     {
@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
                 {
                     if (bigFish != null)
                     {
+                        Debug.Log("Big Fish Kicked");
                         bigFish.ApplyKnockback(transform.position);
                     }
                     else if (smallFish != null)
@@ -140,6 +141,24 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isTouchingFish = true;
+
+            enemy = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isTouchingFish = false;
         }
     }
 

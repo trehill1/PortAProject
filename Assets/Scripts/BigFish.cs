@@ -50,6 +50,15 @@ public class BigFish : MonoBehaviour
     void Update()
     {
         BigRunStateMachine();
+
+        if (isKnockback)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0)
+            {
+                isKnockback = false;
+            }
+        }
     }
 
     private void BigRunStateMachine()
@@ -67,7 +76,7 @@ public class BigFish : MonoBehaviour
         currentState = nextState;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -76,9 +85,9 @@ public class BigFish : MonoBehaviour
             {
                 float bigFishAction = Random.Range(0, 10);
 
-                if (bigFishAction < 4)
+                if (bigFishAction < 10)
                 {
-                    Debug.Log("Big Fish does not Attack");
+                    
                 }
                 else if (bigFishAction < 7)
                 {
@@ -105,6 +114,8 @@ public class BigFish : MonoBehaviour
         knockbackTimer = knockbackDuration;
 
         Vector2 knockbackDirection = (transform.position - enemyPosition).normalized;
+        Debug.Log(knockbackForce);
+
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
 

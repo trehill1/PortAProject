@@ -12,10 +12,11 @@ public class BigMoveState : BigFishState
     private Rigidbody2D rb;
     private bool hasMoved = false;
 
-    public float maxWalkForce = 2f;
+    public float maxWalkForce = 1f;
 
-    private float timer = 0f;
     private float transitionTime = 4f;
+
+    private bool hasFinishedMoving = false;
 
     public override BigFishState BigRunCurrentState()
     {
@@ -29,24 +30,23 @@ public class BigMoveState : BigFishState
             float walkForce = Mathf.Clamp(randomMovement * maxWalkForce, -maxWalkForce, maxWalkForce);
 
             // Randomize move duration within a specified range using Random.Range
-            float moveDuration = Random.Range(1f, 2.5f); // Minimum and maximum duration of walking in seconds
+            float moveDuration = Random.Range(1f, 1.5f); // Minimum and maximum duration of walking in seconds
 
             // Apply the calculated walk force over multiple frames using a coroutine with the randomized duration
             bigFish.StartCoroutine(WalkCoroutine(walkForce, moveDuration));
 
             hasMoved = true;
         }
-        else
+
+        if (hasFinishedMoving)
         {
+            hasFinishedMoving = false;
             hasMoved = false;
-            rb.velocity = Vector2.zero; // Reset velocity when transitioning to idle
-            if (timer >= transitionTime)
-            {
-                timer = 0f;
-                return bigIdleState;
-            }
+            return bigIdleState;
         }
 
+
+  
         return null; // Stay in BigMoveState
     }
 
@@ -59,10 +59,18 @@ public class BigMoveState : BigFishState
             // Apply the walk force horizontally each frame
             rb.AddForce(new Vector2(walkForce, 0f));
             timer += Time.deltaTime;
-            yield return null;
         }
 
         // Reset velocity at the end of the coroutine
-        rb.velocity = Vector2.zero;
+
+        rb.velocity = Vector2.zero; // Reset velocity when transitioning to idle
+        if (timer >= transitionTime)
+        {
+            timer = 0f;
+        }
+
+        hasFinishedMoving = true;
+
+        yield return null;
     }
 }
