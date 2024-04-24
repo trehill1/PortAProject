@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class RandomizerScript : MonoBehaviour
 {
-    public float Enemy;
     public GameObject Bigfish;
     public GameObject Smallfish;
-    public CutSceneFishing csFishing;
+    //public CutSceneFishing csFishing;
 
     private void Start()
     {
-        Enemy = csFishing.getEnemy();
+        float Enemy = CutSceneFishing.Enemy;
+        print("Enemy is: " + Enemy);
 
         if(Enemy < 1)
         {

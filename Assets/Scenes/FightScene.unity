@@ -535,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animation: {fileID: 780046346}
   animator: {fileID: 1841670443}
-  Enemy: 0
+  Randomizer: {fileID: 0}
 --- !u!4 &780046348
 Transform:
   m_ObjectHideFlags: 0
@@ -660,8 +660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 9.09e-13}
-  m_SizeDelta: {x: 462, y: 260}
+  m_AnchoredPosition: {x: 0, y: -0.000015259}
+  m_SizeDelta: {x: 629, y: 354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957574995
 MonoBehaviour:
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 1374180050}
   m_Layer: 5
   m_Name: FishHealth
-  m_TagString: Untagged
+  m_TagString: FishHealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -972,10 +972,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982518e2c986da34fa9636f89f7f0624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: 0
   Bigfish: {fileID: 4341829708452725813, guid: 192022f1d65354cc387cd8d115a08b18, type: 3}
   Smallfish: {fileID: 2800007457598168375, guid: a87002dd2b0ba40c99b2094499bf0a67, type: 3}
-  csFishing: {fileID: 780046347}
 --- !u!1 &1607412033
 GameObject:
   m_ObjectHideFlags: 0

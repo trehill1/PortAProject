@@ -613,6 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfabb9f282fef9d40aaf22d0144ecf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishKillCountText: {fileID: 1369950925}
 --- !u!1 &1369950923
 GameObject:
   m_ObjectHideFlags: 0

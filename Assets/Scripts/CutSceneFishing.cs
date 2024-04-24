@@ -11,7 +11,8 @@ public class CutSceneFishing : MonoBehaviour
     private bool isAnimationFinished = false;
     private float animationDuration = 2.5f; 
     private float elapsedTime = 0f;
-    public float Enemy;
+    public static float Enemy;
+    public RandomizerScript Randomizer;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class CutSceneFishing : MonoBehaviour
         // Play Animation
         PlayFishingAnimation();
         Enemy = Random.Range(0, 2);
+        print("Enemy should be: " + Enemy);
     }
     private void Update()
     {

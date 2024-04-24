@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BigFish : MonoBehaviour
 {
@@ -24,11 +27,24 @@ public class BigFish : MonoBehaviour
 
     public Animator animator;
 
+    public Image healthBarImage;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
+
+        GameObject healthBarObject = GameObject.FindWithTag("FishHealthBar");
+        if (healthBarObject != null)
+        {
+            healthBarImage = healthBarObject.GetComponent<Image>();
+            print("health bar set");
+        }
+        else
+        {
+            Debug.LogError("Fish health bar not found in the scene!");
+        }
     }
 
     void Update()
@@ -95,16 +111,27 @@ public class BigFish : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        print(currentHealth);
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        UpdateFishHealth();
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
+    private void UpdateFishHealth()
+    {
+        float fillAmount = currentHealth / maxHealth;
+        healthBarImage.fillAmount = fillAmount;
+
+    }
+
     private void Die()
     {
+        MainMenu.FishKillCount += 1;
         animator.SetBool("Died", true);
         Debug.Log("Fish died!");
+        SceneManager.LoadScene(0);
     }
 }

@@ -245,6 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animation: {fileID: 318961488}
   animator: {fileID: 318961490}
+  Enemy: 0
+  Randomizer: {fileID: 0}
 --- !u!111 &318961493
 Animation:
   m_ObjectHideFlags: 0

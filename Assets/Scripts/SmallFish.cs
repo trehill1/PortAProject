@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Xml;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 public class SmallFish : MonoBehaviour
 {
     public SmallFishState currentState;
@@ -22,10 +24,22 @@ public class SmallFish : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public Image healthBarImage;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+
+        GameObject healthBarObject = GameObject.FindWithTag("FishHealthBar");
+        if (healthBarObject != null)
+        {
+            healthBarImage = healthBarObject.GetComponent<Image>();
+        }
+        else
+        {
+            Debug.LogError("Fish health bar image not found in the scene!");
+        }
     }
 
     void Update()
@@ -83,15 +97,25 @@ public class SmallFish : MonoBehaviour
     {
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        UpdateFishHealth();
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
+    private void UpdateFishHealth()
+    {
+        float fillAmount = currentHealth / maxHealth;
+        healthBarImage.fillAmount = fillAmount;
+
+    }
+
     private void Die()
     {
+        MainMenu.FishKillCount += 1;
         //animator.SetBool("Died", true);
         Debug.Log("Fish died!");
+        SceneManager.LoadScene(0);
     }
 }
