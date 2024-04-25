@@ -15,13 +15,13 @@ public class RandomizerScript : MonoBehaviour
 
         if(Enemy < 1)
         {
-            Vector3 spawnPosition = new Vector3(6f, -3.5f, 0f);
+            Vector3 spawnPosition = new Vector3(6f, -1.53f, 0f);
             Quaternion spawnRotation = Quaternion.identity;
             GameObject spawnedObject = Instantiate(Bigfish, spawnPosition, spawnRotation);
         }
         else
         {
-            Vector3 spawnPosition = new Vector3(6f, -3.5f, 0f);
+            Vector3 spawnPosition = new Vector3(6f, -1.53f, 0f);
             Quaternion spawnRotation = Quaternion.identity;
             GameObject spawnedObject = Instantiate(Smallfish, spawnPosition, spawnRotation);
         }
