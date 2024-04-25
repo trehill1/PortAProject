@@ -295,7 +295,7 @@ MonoBehaviour:
   bigMoveState: {fileID: 8305079171651282657}
   maxHealth: 100
   currentHealth: 0
-  knockbackForce: 10
+  knockbackForce: 15
   knockbackDuration: 0.5
   animator: {fileID: 1970861067453279534}
   healthBarImage: {fileID: 0}

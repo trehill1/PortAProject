@@ -17,7 +17,7 @@ public class SmallFish : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
-    public float knockbackForce = 10f;
+    public float knockbackForce = 20f;
     public float knockbackDuration = 0.5f;
     private bool isKnockback = false;
     private float knockbackTimer;
@@ -62,7 +62,7 @@ public class SmallFish : MonoBehaviour
         currentState = nextState;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -71,7 +71,7 @@ public class SmallFish : MonoBehaviour
             {
                 float bigFishAction = Random.Range(0, 10);
 
-                if (bigFishAction < 5)
+                if (bigFishAction < 7)
                 {
                     Debug.Log("Small Fish does not Attack");
                 }

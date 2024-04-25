@@ -121,23 +121,25 @@ public class Player : MonoBehaviour
                     if (bigFish != null)
                     {
                         bigFish.ApplyKnockback(transform.position);
-                        Debug.Log("Big Fish Punched");
+                        bigFish.TakeDamage(10);
                     }
                     else if (smallFish != null)
                     {
                         smallFish.ApplyKnockback(transform.position);
+                        smallFish.TakeDamage(20);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(1))
                 {
                     if (bigFish != null)
                     {
-                        Debug.Log("Big Fish Kicked");
                         bigFish.ApplyKnockback(transform.position);
+                        bigFish.TakeDamage(10);
                     }
                     else if (smallFish != null)
                     {
                         smallFish.ApplyKnockback(transform.position);
+                        smallFish.TakeDamage(20);
                     }
                 }
             }

@@ -11,7 +11,7 @@ public class BigIdleState : BigFishState
 
     public override BigFishState BigRunCurrentState()
     {
-            float idleTime = Random.Range(4f, 5f); // Idle time in seconds
+            float idleTime = Random.Range(1f, 1.5f); // Idle time in seconds
             timer += Time.deltaTime;
 
         if (timer >= idleTime)
@@ -19,11 +19,11 @@ public class BigIdleState : BigFishState
             timer = 0f;
             int randomValue = Random.Range(0,10); // Get a random value between 0 and 10
 
-            if (randomValue > 2) // 80% chance for move state
+            if (randomValue > 1) // 90% chance for move state
             {
                 return bigMoveState;
             }
-            else // 20% chance for jump state
+            else // 10% chance for jump state
             {
                 return bigJumpState;
             } 

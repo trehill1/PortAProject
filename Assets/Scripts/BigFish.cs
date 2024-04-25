@@ -17,7 +17,7 @@ public class BigFish : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
-    public float knockbackForce = 10f;
+    public float knockbackForce = 15f;
     public float knockbackDuration = 0.5f;
     private bool isKnockback = false;
     private float knockbackTimer;
@@ -85,15 +85,15 @@ public class BigFish : MonoBehaviour
             {
                 float bigFishAction = Random.Range(0, 10);
 
-                if (bigFishAction < 10)
+                if (bigFishAction < 6)
                 {
-                    
+                    Debug.Log("Do nothing");
                 }
-                else if (bigFishAction < 7)
+                else if (bigFishAction < 8)
                 {
                     animator.SetTrigger("TrPunch");
                     // Apply punch force to the player
-                    playerScript.TakeDamage(10);
+                    playerScript.TakeDamage(5);
                     playerScript.ApplyKnockback(transform.position); // Pass BigFish's position to ApplyKnockback
 
                 }
@@ -101,7 +101,7 @@ public class BigFish : MonoBehaviour
                 {
                     animator.SetTrigger("TrKick");
                     // Apply kick force to the player
-                    playerScript.TakeDamage(20);
+                    playerScript.TakeDamage(10);
                     playerScript.ApplyKnockback(transform.position); // Pass BigFish's position to ApplyKnockback
                 }
             }
@@ -114,8 +114,6 @@ public class BigFish : MonoBehaviour
         knockbackTimer = knockbackDuration;
 
         Vector2 knockbackDirection = (transform.position - enemyPosition).normalized;
-        Debug.Log(knockbackForce);
-
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
 

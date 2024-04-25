@@ -14,7 +14,7 @@ public class BigMoveState : BigFishState
 
     public float maxWalkForce = 1f;
 
-    private float transitionTime = 4f;
+    private float transitionTime = 2f;
 
     private bool hasFinishedMoving = false;
 
@@ -24,7 +24,7 @@ public class BigMoveState : BigFishState
         {
             rb = bigFish.GetComponent<Rigidbody2D>();
 
-            float randomMovement = Random.Range(-1f, 1f); // Random value between -1 and 1
+            float randomMovement = Random.Range(-0.75f, 0.75f); // Random value between -1 and 1
 
             // Calculate the walk force based on the random movement and clamp it within the max walk force range
             float walkForce = Mathf.Clamp(randomMovement * maxWalkForce, -maxWalkForce, maxWalkForce);
