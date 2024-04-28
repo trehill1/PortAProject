@@ -171,18 +171,12 @@ public class Player : MonoBehaviour
 
     private void PlayPunchAnimation()
     {
-        animator.SetBool("Punch", true);
+        animator.SetTrigger("Punch");
     }
 
     private void PlayKickAnimation()
     {
-        animator.SetBool("Kick", true);
-    }
-
-    private void OnAnimationFinished()
-    {
-        animator.SetBool("Punch", false);
-        animator.SetBool("Kick", false);
+        animator.SetTrigger("Kick");
     }
 
     private void Jump()
@@ -220,7 +214,7 @@ public class Player : MonoBehaviour
     {
         // Handle player death
         deathText.gameObject.SetActive(true);
-        animator.SetBool("Died", true);
+        animator.SetTrigger("Die");
         Debug.Log("Player died!");
     }
 }
