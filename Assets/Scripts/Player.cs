@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
 
     public bool isTouchingFish = false;
 
-
+    public AudioSource src;
+    public AudioClip playerHit;
 
     private void Start()
     {
@@ -91,10 +92,14 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
         {
             PlayPunchAnimation();
+            src.clip = playerHit;
+            src.Play();
         }
         else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(1))
         {
             PlayKickAnimation();
+            src.clip = playerHit;
+            src.Play();
         }
 
         // Update knockback timer

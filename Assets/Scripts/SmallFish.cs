@@ -22,9 +22,14 @@ public class SmallFish : MonoBehaviour
     private bool isKnockback = false;
     private float knockbackTimer;
 
+    public Animator animator;
+
     private Rigidbody2D rb;
 
     public Image healthBarImage;
+
+    public AudioSource src;
+    public AudioClip smallFishHit;
 
     private void Start()
     {
@@ -45,6 +50,14 @@ public class SmallFish : MonoBehaviour
     void Update()
     {
         RunStateMachine();
+        if (isKnockback)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0)
+            {
+                isKnockback = false;
+            }
+        }
     }
 
     private void RunStateMachine()
@@ -77,6 +90,8 @@ public class SmallFish : MonoBehaviour
                 }
                 else
                 {
+                    src.clip = smallFishHit;
+                    src.Play();
                     playerScript.TakeDamage(10);
                     playerScript.ApplyKnockback(transform.position);
                 }
@@ -97,9 +112,11 @@ public class SmallFish : MonoBehaviour
     {
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        animator.SetTrigger("TrDamage");
         UpdateFishHealth();
         if (currentHealth <= 0)
         {
+            animator.SetTrigger("TrDead");
             Die();
         }
     }

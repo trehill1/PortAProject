@@ -10,9 +10,9 @@ public class BigFish : MonoBehaviour
     public BigFishState currentState;
 
     public BigIdleState bigIdleState;
-    public BigHurtState bigHurtState;
     public BigJumpState bigJumpState;
     public BigMoveState bigMoveState;
+    public BigHurtState bigHurtState;
 
     public float maxHealth = 100f;
     public float currentHealth;
@@ -22,12 +22,16 @@ public class BigFish : MonoBehaviour
     private bool isKnockback = false;
     private float knockbackTimer;
 
+    public GameObject player;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     public Animator animator;
 
     public Image healthBarImage;
+
+    public AudioSource src;
+    public AudioClip bigFishHit;
 
     private void Start()
     {
@@ -59,6 +63,17 @@ public class BigFish : MonoBehaviour
                 isKnockback = false;
             }
         }
+        if (player != null)
+        {
+            if (transform.position.x < player.transform.position.x)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else
+            {
+                spriteRenderer.flipX = false;
+            }
+        }
     }
 
     private void BigRunStateMachine()
@@ -80,6 +95,7 @@ public class BigFish : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            player = collision.gameObject;
             Player playerScript = collision.gameObject.GetComponent<Player>();
             if (playerScript != null)
             {
@@ -92,6 +108,8 @@ public class BigFish : MonoBehaviour
                 else if (bigFishAction < 8)
                 {
                     animator.SetTrigger("TrPunch");
+                    src.clip = bigFishHit;
+                    src.Play();
                     // Apply punch force to the player
                     playerScript.TakeDamage(5);
                     playerScript.ApplyKnockback(transform.position); // Pass BigFish's position to ApplyKnockback
@@ -100,6 +118,8 @@ public class BigFish : MonoBehaviour
                 else
                 {
                     animator.SetTrigger("TrKick");
+                    src.clip = bigFishHit;
+                    src.Play();
                     // Apply kick force to the player
                     playerScript.TakeDamage(10);
                     playerScript.ApplyKnockback(transform.position); // Pass BigFish's position to ApplyKnockback
@@ -122,9 +142,11 @@ public class BigFish : MonoBehaviour
         currentHealth -= damageAmount;
         print(currentHealth);
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        animator.SetTrigger("TrDamage");
         UpdateFishHealth();
         if (currentHealth <= 0)
         {
+            animator.SetTrigger("TrDead");
             Die();
         }
     }

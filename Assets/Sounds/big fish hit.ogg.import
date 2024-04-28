@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bc3su0jhhxu2f"
+path="res://.godot/imported/big fish hit.ogg-c23ddc50fcbd168d9f33a800dd0b53fd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/big fish hit.ogg"
+dest_files=["res://.godot/imported/big fish hit.ogg-c23ddc50fcbd168d9f33a800dd0b53fd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

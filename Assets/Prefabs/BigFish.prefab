@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &46310552139367744
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6209553953816183393}
-  - component: {fileID: 8822441270695081247}
-  m_Layer: 0
-  m_Name: BigPunchState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6209553953816183393
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46310552139367744}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8323500333237119161}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8822441270695081247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46310552139367744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84a971eafca5244dc930ab4235726086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bigIdleState: {fileID: 4520529343719302723}
 --- !u!1 &2669461876159688628
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +62,7 @@ GameObject:
   - component: {fileID: 567566764474301873}
   - component: {fileID: 1970861067453279534}
   - component: {fileID: 267101446678844864}
+  - component: {fileID: 2309869094367710000}
   m_Layer: 0
   m_Name: BigFish
   m_TagString: Enemy
@@ -290,15 +246,115 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 4520529343719302723}
   bigIdleState: {fileID: 4520529343719302723}
-  bigHurtState: {fileID: 5682214282774625151}
   bigJumpState: {fileID: 4863665522110381650}
   bigMoveState: {fileID: 8305079171651282657}
+  bigHurtState: {fileID: 3602216328017263291}
   maxHealth: 100
   currentHealth: 0
   knockbackForce: 15
   knockbackDuration: 0.5
+  player: {fileID: 0}
+  spriteRenderer: {fileID: 7785972335283750030}
   animator: {fileID: 1970861067453279534}
   healthBarImage: {fileID: 0}
+  src: {fileID: 2309869094367710000}
+  bigFishHit: {fileID: 8300000, guid: 7bfdd9141f6d74ad68abbdd9131b39e9, type: 3}
+--- !u!82 &2309869094367710000
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4341829708452725813}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4386455480123687265
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,50 +401,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bigMoveState: {fileID: 8305079171651282657}
   bigJumpState: {fileID: 4863665522110381650}
---- !u!1 &4721762151262877876
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3466461224997755588}
-  - component: {fileID: 5682214282774625151}
-  m_Layer: 0
-  m_Name: BigHurtState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3466461224997755588
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4721762151262877876}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8323500333237119161}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5682214282774625151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4721762151262877876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b64604d5f4ba446189963a916651d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5179006784918869863
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +448,7 @@ MonoBehaviour:
   bigIdleState: {fileID: 4520529343719302723}
   bigFish: {fileID: 267101446678844864}
   maxWalkForce: 2
---- !u!1 &6839497687196345232
+--- !u!1 &7566263079134679893
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -444,22 +456,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9008451043828471074}
-  - component: {fileID: 5994806983710376421}
+  - component: {fileID: 7189717337458817766}
+  - component: {fileID: 3602216328017263291}
   m_Layer: 0
-  m_Name: BigKickState
+  m_Name: BigHurtState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9008451043828471074
+--- !u!4 &7189717337458817766
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6839497687196345232}
+  m_GameObject: {fileID: 7566263079134679893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -468,19 +480,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8323500333237119161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5994806983710376421
+--- !u!114 &3602216328017263291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6839497687196345232}
+  m_GameObject: {fileID: 7566263079134679893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca15baae1de7f46f1b5db6a36b94385b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b64604d5f4ba446189963a916651d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigIdleState: {fileID: 4520529343719302723}
 --- !u!1 &8114518031909311959
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,11 +598,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3466461224997755588}
   - {fileID: 6892612809904981788}
   - {fileID: 737015510614680777}
-  - {fileID: 9008451043828471074}
   - {fileID: 7325277482886373878}
-  - {fileID: 6209553953816183393}
+  - {fileID: 7189717337458817766}
   m_Father: {fileID: 1410454331530058108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
