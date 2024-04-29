@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        FishKillCount = 0;
+        Player.currentHealth = 100;
         SceneManager.LoadScene(2);
     }
 

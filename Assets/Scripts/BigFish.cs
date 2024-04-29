@@ -43,11 +43,11 @@ public class BigFish : MonoBehaviour
         if (healthBarObject != null)
         {
             healthBarImage = healthBarObject.GetComponent<Image>();
-            print("health bar set");
+            
         }
         else
         {
-            Debug.LogError("Fish health bar not found in the scene!");
+           Debug.LogError("Fish health bar not found in the scene!");
         }
     }
 
@@ -103,7 +103,7 @@ public class BigFish : MonoBehaviour
 
                 if (bigFishAction < 6)
                 {
-                    Debug.Log("Do nothing");
+                   // Debug.Log("Do nothing");
                 }
                 else if (bigFishAction < 8)
                 {
@@ -140,7 +140,7 @@ public class BigFish : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        print(currentHealth);
+        //print(currentHealth);
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         animator.SetTrigger("TrDamage");
         UpdateFishHealth();
@@ -162,7 +162,17 @@ public class BigFish : MonoBehaviour
     {
         MainMenu.FishKillCount += 1;
         animator.SetBool("Died", true);
-        Debug.Log("Fish died!");
-        SceneManager.LoadScene(0);
+        //Debug.Log("Fish died!");
+
+        //Debug.Log(Player.currentHealth);
+        Player.currentHealth += 30f;
+
+        //Load next fish Scene
+        StartCoroutine(LoadSceneAfterDelay(1f));
+    }
+    private IEnumerator LoadSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(2);
     }
 }

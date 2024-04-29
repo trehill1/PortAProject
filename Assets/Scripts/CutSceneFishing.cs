@@ -22,7 +22,7 @@ public class CutSceneFishing : MonoBehaviour
         // Play Animation
         PlayFishingAnimation();
         Enemy = Random.Range(0, 2);
-        print("Enemy should be: " + Enemy);
+        //print("Enemy should be: " + Enemy);
     }
     private void Update()
     {

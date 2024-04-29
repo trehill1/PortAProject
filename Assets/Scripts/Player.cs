@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
     private bool canJump = true;
     private float jumpTimer;
     public Animator animator;
-    private float currentHealth;
+    public static float currentHealth = 100f;
     private bool isKnockback = false;
     private float knockbackTimer;
 
@@ -35,7 +36,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = maxHealth;
+        print("current Health: " + currentHealth);
+        UpdatePlayerHealth();
     }
 
     private void Update()
@@ -210,11 +212,25 @@ public class Player : MonoBehaviour
 
     }
 
+    public void OnAnimationFinished()
+    {
+        // Handle the animation finished event
+        //Debug.Log("Player_Kick animation finished!");
+    }
+
     private void Die()
     {
         // Handle player death
         deathText.gameObject.SetActive(true);
         animator.SetTrigger("Die");
         Debug.Log("Player died!");
+        //Load main menu Scene
+        StartCoroutine(LoadSceneAfterDelay(3f));
+    }
+
+    private IEnumerator LoadSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(0);
     }
 }

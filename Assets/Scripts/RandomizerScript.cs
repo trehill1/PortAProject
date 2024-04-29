@@ -11,7 +11,7 @@ public class RandomizerScript : MonoBehaviour
     private void Start()
     {
         float Enemy = CutSceneFishing.Enemy;
-        print("Enemy is: " + Enemy);
+        //print("Enemy is: " + Enemy);
 
         if(Enemy < 1)
         {

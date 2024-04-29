@@ -86,7 +86,7 @@ public class SmallFish : MonoBehaviour
 
                 if (bigFishAction < 7)
                 {
-                    Debug.Log("Small Fish does not Attack");
+                    //Debug.Log("Small Fish does not Attack");
                 }
                 else
                 {
@@ -131,8 +131,18 @@ public class SmallFish : MonoBehaviour
     private void Die()
     {
         MainMenu.FishKillCount += 1;
-        //animator.SetBool("Died", true);
-        Debug.Log("Fish died!");
-        SceneManager.LoadScene(0);
+        animator.SetBool("Died", true);
+        //Debug.Log("Fish died!");
+
+        //Debug.Log(Player.currentHealth);
+        Player.currentHealth += 30f;
+
+        //Load next fish Scene
+        StartCoroutine(LoadSceneAfterDelay(3f));
+    }
+    private IEnumerator LoadSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(2);
     }
 }
